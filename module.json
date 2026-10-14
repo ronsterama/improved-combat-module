@@ -1,0 +1,32 @@
+{
+  "id": "improved-combat-module",
+  "title": "Improved Combat Module",
+  "description": "A floating Combat HUD for CoC7 that combines targeting and weapon rolls in one panel, so players don't have to juggle the Combat Tracker, character sheet, and chat.",
+  "version": "0.3.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "ronsterama"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/combat-hud.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "https://github.com/ronsterama/improved-combat-module",
+  "manifest": "https://github.com/ronsterama/improved-combat-module/releases/latest/download/module.json",
+  "download": "https://github.com/ronsterama/improved-combat-module/releases/download/v0.3.0/module.zip",
+  "flags": {}
+}

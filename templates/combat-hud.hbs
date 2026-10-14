@@ -1,0 +1,71 @@
+<div class="ich-combat-hud">
+  <section class="ich-target">
+    <h3>{{localize "COMBATHUD.Target"}}</h3>
+    {{#if target}}
+      <div class="ich-current-target">
+        <img src="{{target.img}}" alt="{{target.name}}" />
+        <span>{{target.name}}</span>
+      </div>
+    {{else}}
+      <p class="ich-no-target">{{localize "COMBATHUD.NoTarget"}}</p>
+    {{/if}}
+    {{#if combatants.length}}
+      <div class="ich-combatant-strip">
+        {{#each combatants as |c|}}
+          <button type="button"
+                  class="ich-combatant{{#if c.isTargeted}} targeted{{/if}}"
+                  data-action="toggleTarget"
+                  data-token-id="{{c.tokenId}}"
+                  title="{{c.name}}">
+            <img src="{{c.img}}" alt="{{c.name}}" />
+          </button>
+        {{/each}}
+      </div>
+    {{/if}}
+  </section>
+
+  <section class="ich-weapons">
+    <h3>{{localize "COMBATHUD.Weapons"}}</h3>
+    {{#if actorName}}
+      <p class="ich-actor-name">{{actorName}}</p>
+
+      {{#if melee.length}}
+        <div class="ich-weapon-group">
+          <h4>{{localize "COMBATHUD.Melee"}}</h4>
+          {{#each melee as |w|}}
+            <button type="button"
+                    class="ich-weapon-btn{{#unless w.rollable}} disabled{{/unless}}"
+                    data-action="rollWeapon"
+                    data-item-id="{{w.id}}"
+                    {{#unless w.rollable}}disabled{{/unless}}>
+              <img src="{{w.img}}" alt="{{w.name}}" />
+              <span>{{w.name}}</span>
+            </button>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#if range.length}}
+        <div class="ich-weapon-group">
+          <h4>{{localize "COMBATHUD.Ranged"}}</h4>
+          {{#each range as |w|}}
+            <button type="button"
+                    class="ich-weapon-btn{{#unless w.rollable}} disabled{{/unless}}"
+                    data-action="rollWeapon"
+                    data-item-id="{{w.id}}"
+                    {{#unless w.rollable}}disabled{{/unless}}>
+              <img src="{{w.img}}" alt="{{w.name}}" />
+              <span>{{w.name}}</span>
+            </button>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#unless hasWeapons}}
+        <p class="ich-no-weapons">{{localize "COMBATHUD.NoWeapons"}}</p>
+      {{/unless}}
+    {{else}}
+      <p class="ich-no-weapons">{{localize "COMBATHUD.NoActor"}}</p>
+    {{/if}}
+  </section>
+</div>

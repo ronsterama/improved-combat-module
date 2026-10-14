@@ -1,0 +1,14 @@
+{
+  "COMBATHUD": {
+    "Title": "Combat HUD",
+    "ToggleTitle": "Toggle Combat HUD",
+    "Target": "Target",
+    "NoTarget": "No target selected",
+    "Weapons": "Weapons",
+    "Melee": "Melee",
+    "Ranged": "Ranged",
+    "NoWeapons": "No weapons found on this character",
+    "NoActor": "No owned character found for this HUD",
+    "NoRoll": "This weapon has no skill assigned and can't be rolled"
+  }
+}

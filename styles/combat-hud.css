@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Scoped to --ich- to avoid colliding with Foundry's own theme variables. */
+:root {
+  --ich-ink: #15120e;
+  --ich-ink-2: #1b1712;
+  --ich-panel: #221c15;
+  --ich-panel-2: #2a2319;
+  --ich-edge: #4a3c26;
+  --ich-edge-dim: #33291b;
+  --ich-parchment: #e7dcc0;
+  --ich-muted: #a3936f;
+  --ich-muted-dim: #6f624a;
+  --ich-blood: #9a3626;
+  --ich-blood-bright: #c24a35;
+  --ich-verdant: #7c9767;
+  --ich-verdant-bright: #9db986;
+}
+
+/* ---------- toggle button ---------- */
+#ich-hud-toggle {
+  position: fixed;
+  left: 16px;
+  bottom: 120px;
+  z-index: 60;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ich-blood);
+  background: radial-gradient(circle at 35% 30%, #7a2c20, #5c2018);
+  color: var(--ich-parchment);
+  font-size: 20px;
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.7), 0 0 0 0 rgba(154, 54, 38, 0.5);
+  animation: ich-pulse 2.6s ease-in-out infinite;
+}
+
+#ich-hud-toggle:hover {
+  border-color: var(--ich-blood-bright);
+}
+
+#ich-hud-toggle.active {
+  border-color: var(--ich-verdant-bright);
+  background: radial-gradient(circle at 35% 30%, #4f6042, #38452f);
+  animation: none;
+}
+
+@keyframes ich-pulse {
+  0%, 100% { box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.7), 0 0 0 0 rgba(154, 54, 38, 0.45); }
+  50% { box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.7), 0 0 0 9px rgba(154, 54, 38, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ich-hud-toggle { animation: none; }
+}
+
+/* ---------- the HUD window itself ---------- */
+.improved-combat-module.combat-hud {
+  font-family: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+  color: var(--ich-parchment);
+  background: var(--ich-panel);
+  border: 1px solid var(--ich-edge);
+  border-radius: 7px;
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.7);
+}
+
+.improved-combat-module.combat-hud .window-header {
+  background: linear-gradient(var(--ich-panel-2), var(--ich-panel));
+  border-bottom: 1px solid var(--ich-edge);
+  color: var(--ich-parchment);
+}
+
+.improved-combat-module.combat-hud .window-title {
+  font-family: 'Special Elite', 'Courier Prime', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ich-parchment);
+}
+
+.improved-combat-module.combat-hud .window-header a,
+.improved-combat-module.combat-hud .window-header i {
+  color: var(--ich-verdant-bright);
+}
+
+.improved-combat-module.combat-hud .window-content {
+  padding: 10px;
+  background: var(--ich-panel);
+}
+
+.ich-combat-hud section {
+  margin-bottom: 14px;
+}
+
+.ich-combat-hud h3 {
+  font-family: 'Special Elite', 'Courier Prime', monospace;
+  margin: 0 0 7px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ich-muted-dim);
+}
+
+.ich-combat-hud h4 {
+  font-family: 'Special Elite', 'Courier Prime', monospace;
+  margin: 8px 0 5px;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ich-muted-dim);
+}
+
+/* ---------- target ---------- */
+.ich-current-target {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 8px;
+  border: 1px solid var(--ich-edge);
+  border-radius: 5px;
+  background: var(--ich-panel-2);
+}
+
+.ich-current-target img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--ich-blood-bright);
+  object-fit: cover;
+  flex: none;
+}
+
+.ich-current-target span {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.ich-no-target,
+.ich-no-weapons {
+  font-style: italic;
+  color: var(--ich-muted);
+  font-size: 12px;
+  padding: 7px 8px;
+  border: 1px dashed var(--ich-edge-dim);
+  border-radius: 5px;
+}
+
+.ich-combatant-strip {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ich-combatant {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.ich-combatant img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--ich-edge-dim);
+  object-fit: cover;
+}
+
+.ich-combatant:hover img {
+  border-color: var(--ich-muted);
+}
+
+.ich-combatant.targeted img {
+  border-color: var(--ich-blood-bright);
+  box-shadow: 0 0 0 3px rgba(154, 54, 38, 0.18);
+}
+
+/* ---------- weapons ---------- */
+.ich-actor-name {
+  font-size: 12px;
+  color: var(--ich-muted);
+  margin: -3px 0 8px;
+}
+
+.ich-weapon-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 7px 8px;
+  margin-bottom: 5px;
+  border: 1px solid var(--ich-edge);
+  border-radius: 5px;
+  background: var(--ich-panel-2);
+  color: var(--ich-parchment);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.ich-weapon-btn:last-child {
+  margin-bottom: 0;
+}
+
+.ich-weapon-btn:hover {
+  border-color: var(--ich-verdant);
+  background: rgba(124, 151, 103, 0.1);
+}
+
+.ich-weapon-btn:focus-visible {
+  outline: 2px solid var(--ich-verdant-bright);
+  outline-offset: 1px;
+}
+
+.ich-weapon-btn img {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid var(--ich-edge-dim);
+  object-fit: cover;
+  flex: none;
+}
+
+.ich-weapon-btn span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ich-weapon-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* brief flash to confirm a roll was forwarded, since the actual result
+   arrives moments later as a normal CoC7 chat card */
+.ich-weapon-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20px 50%, rgba(124, 151, 103, 0.35), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ich-weapon-btn.is-rolling {
+  border-color: var(--ich-verdant-bright);
+}
+
+.ich-weapon-btn.is-rolling::after {
+  animation: ich-roll-flash 0.55s ease;
+}
+
+@keyframes ich-roll-flash {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ich-weapon-btn.is-rolling::after { animation: none; }
+}

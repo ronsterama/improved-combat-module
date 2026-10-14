@@ -10,6 +10,18 @@ target selection, the weapon list, and the click-forwarded roll (confirmed by
 a real CoC7 combat card landing in chat) all check out. See "Known
 limitations / next steps" below for what's still deliberately unfinished.
 
+v0.3 — `module.json` declares V14 as verified, and the module is confirmed
+working on Foundry 14.369. The toggle button is draggable.
+
+v0.4 — also works with **Ginzzzu's CoC7 Sheets** (`ginzzzu-coc7-sheets`) as
+well as CoC7's own sheets. With that module's investigator or Keeper NPC
+sheet the HUD lists weapons from the actor's items, opens its hidden copy of
+the sheet on the Combat tab (and puts the tab back when it closes), and
+attacks through that sheet's own **Attack** button. Without Ginzzzu nothing
+changes. A hidden sheet the HUD opened is also closed when the HUD closes,
+even after the HUD has re-rendered. The Ginzzzu path has not been verified
+in a live world yet.
+
 v0.3 — `module.json` now declares V14 as verified. The module already used
 the namespaced `foundry.applications.api.ApplicationV2` /
 `HandlebarsApplicationMixin` API and plain DOM (no jQuery), which V14 keeps

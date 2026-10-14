@@ -111,10 +111,11 @@ pulled back into view automatically.
 
 ## Releasing a new version
 
-1. Bump nothing by hand — just create a GitHub release tagged `vX.Y.Z`.
-2. The workflow in `.github/workflows/release.yml` stamps that version and
-   the manifest/download URLs into `module.json`, builds `module.zip`, and
-   attaches both to the release.
+1. Commit and push your changes, then push a tag: `git tag vX.Y.Z` and
+   `git push origin vX.Y.Z`.
+2. The workflow in `.github/workflows/release.yml` creates the GitHub
+   release, stamps that version and the manifest/download URLs into
+   `module.json`, builds `module.zip`, and attaches both to it.
 
 ## Known limitations / next steps
 
@@ -145,7 +146,7 @@ out some things to keep the first version simple:
 
 | Foundry | System | Status |
 |---------|--------|--------|
-| V13 | CoC7 (investigator-v2 / npc-v2 sheets) | Verified live on a Molten-hosted world |
+| V13+ | CoC7 (investigator-v2 / npc-v2 sheets) | Verified live on Foundry 14.369 (Molten-hosted world) |
 | V14 | CoC7 (investigator-v2 / npc-v2 sheets) | Code-level compatible (no breaking APIs used); not yet live-tested |
 | V14 | CoC7 8.15 + Ginzzzu's CoC7 Sheets 1.0 | v0.4: tested against a mock of that sheet's markup; not yet live-tested |
 
